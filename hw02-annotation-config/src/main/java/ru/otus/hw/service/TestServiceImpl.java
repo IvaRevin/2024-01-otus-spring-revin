@@ -36,9 +36,6 @@ public class TestServiceImpl implements TestService {
                 "Accept only numbers from 1 to " + question.answers().size()
             );
 
-            if (answerIndex == 0) {
-                answerIndex = 1;
-            }
             Answer answer = question.answers().get(answerIndex - 1);
 
             var isAnswerValid = answer.isCorrect();
