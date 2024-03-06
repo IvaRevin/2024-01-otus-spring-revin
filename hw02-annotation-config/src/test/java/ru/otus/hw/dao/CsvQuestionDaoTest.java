@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.otus.hw.config.AppProperties;
@@ -21,15 +23,11 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class CsvQuestionDaoTest {
 
-    private static AppProperties appProperties;
+    @Mock
+    private AppProperties appProperties;
 
-    private static CsvQuestionDao csvQuestionDao;
-
-    @BeforeAll
-    static void setUp() {
-        appProperties = Mockito.mock(AppProperties.class);
-        csvQuestionDao = new CsvQuestionDao(appProperties);
-    }
+    @InjectMocks
+    private CsvQuestionDao csvQuestionDao;
 
     @Order(1)
     @DisplayName("Ожидается ошибка на отсутствие файла")

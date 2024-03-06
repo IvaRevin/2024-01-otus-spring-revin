@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.otus.hw.dao.QuestionDao;
@@ -24,16 +26,14 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class TestServiceImplTest {
 
-    private static IOService ioService;
-    private static QuestionDao questionDao;
-    private static TestServiceImpl testService;
+    @Mock
+    private IOService ioService;
 
-    @BeforeAll
-    static void setUp() {
-        ioService = Mockito.mock(IOService.class);
-        questionDao = Mockito.mock(QuestionDao.class);
-        testService = new TestServiceImpl(ioService, questionDao);
-    }
+    @Mock
+    private QuestionDao questionDao;
+
+    @InjectMocks
+    private TestServiceImpl testService;
 
     @Test
     @DisplayName("Корректно выполняет тестирование студента")
