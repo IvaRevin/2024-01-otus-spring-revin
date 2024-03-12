@@ -1,0 +1,4 @@
+#
+Which option is a good way to handle the exception?;@SneakyThrow%false|e.printStackTrace()%false|Rethrow with wrapping in business exception (for example, QuestionReadException)%true|Ignoring exception%false
+What is JDK?;Java Standard Edition%false|Java Enterprise Edition%false|Java Development Kit%true
+Which period is lithium in?;3%false|1%false|2%true
