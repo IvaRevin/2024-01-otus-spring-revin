@@ -1,0 +1,7 @@
+
+${AnsiColor.MAGENTA}     ___ _____ _   _ ____    _   ___        _____  _  _
+${AnsiColor.BRIGHT_CYAN}    / _ \_   _| | | / ___|  | | | \ \      / / _ \| || |
+${AnsiColor.BRIGHT_CYAN}   | | | || | | | | \___ \  | |_| |\ \ /\ / / | | | || |_
+${AnsiColor.GREEN}   | |_| || | | |_| |___) | |  _  | \ V  V /| |_| |__   _|
+${AnsiColor.BRIGHT_GREEN}    \___/ |_|  \___/|____/  |_| |_|  \_/\_/  \___/   |_|
+
