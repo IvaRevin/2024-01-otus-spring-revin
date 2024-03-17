@@ -1,11 +1,9 @@
 package ru.otus.hw.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
-@Profile("!test")
 @Service
 public class TestRunnerServiceImpl implements TestRunnerService {
 
@@ -15,8 +13,7 @@ public class TestRunnerServiceImpl implements TestRunnerService {
 
     private final ResultService resultService;
 
-    @Override
-    public void run(String... args) {
+    public void run() {
         var student = studentService.determineCurrentStudent();
         var testResult = testService.executeTestFor(student);
         resultService.showResult(testResult);
