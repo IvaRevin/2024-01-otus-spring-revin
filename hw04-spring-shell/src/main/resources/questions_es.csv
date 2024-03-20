@@ -1,0 +1,6 @@
+# Добавить сюда своих вопросов. Эту строку надо пропустить при настройке CsvToBean (withSkipLines)
+Hay vida en Marte?;La ciencia aún no lo sabe%verdad|Ciertamente. El OVNI rojo es de Marte. Y el verde es de Venus%false|Absolutamente no%false
+Cómo se deben cargar los recursos desde jar en Java?;ClassLoader#geResourceAsStream o ClassPathResource#getInputStream%true|ClassLoader#geResource#getFile + FileReader%false|Wingardium Leviosa%false
+Qué opción es una buena manera de manejar la excepción?;@SneakyThrow%false|e.printStackTrace()%false|Relanzar con ajuste en la excepción comercial (por ejemplo, QuestionReadException)%true|Ignorar la excepción%false
+Qué es JDK?;Java Standard Edition%false|Java Enterprise Edition%false|Java Development Kit%true
+En qué periodo se encuentra el litio?;3%false|1%false|2%true
