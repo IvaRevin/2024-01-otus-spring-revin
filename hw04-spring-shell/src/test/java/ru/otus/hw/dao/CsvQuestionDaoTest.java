@@ -5,10 +5,10 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 import ru.otus.hw.config.AppProperties;
 import ru.otus.hw.exceptions.QuestionReadException;
 
@@ -18,14 +18,15 @@ import static org.mockito.Mockito.when;
 
 @DisplayName("Тест CsvQuestionDao")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@ExtendWith(MockitoExtension.class)
+@ActiveProfiles("test")
+@SpringBootTest
 public class CsvQuestionDaoTest {
 
-    @Mock
+    @MockBean
     private AppProperties appProperties;
 
-    @InjectMocks
-    private CsvQuestionDao csvQuestionDao;
+    @Autowired
+    private QuestionDao csvQuestionDao;
 
     @Order(1)
     @DisplayName("Ожидается ошибка на отсутствие файла")
