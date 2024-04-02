@@ -12,3 +12,10 @@ insert into books_genres(book_id, genre_id)
 values (1, 1),   (1, 2),
        (2, 3),   (2, 4),
        (3, 5),   (3, 6);
+
+insert into comments(text, book_id)
+    values ('Не читал', 1),
+    ('Читал', 1),
+    ('Понравилось', 1),
+    ('Не понравилось', 2),
+    ('Сюжет не впечатлил', 3);
