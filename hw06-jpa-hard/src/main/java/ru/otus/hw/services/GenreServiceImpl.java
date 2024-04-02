@@ -2,10 +2,12 @@ package ru.otus.hw.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.otus.hw.models.Genre;
+import org.springframework.transaction.annotation.Transactional;
+import ru.otus.hw.dtos.GenreDTO;
 import ru.otus.hw.repositories.GenreRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -13,7 +15,10 @@ public class GenreServiceImpl implements GenreService {
     private final GenreRepository genreRepository;
 
     @Override
-    public List<Genre> findAll() {
-        return genreRepository.findAll();
+    @Transactional(readOnly = true)
+    public List<GenreDTO> findAll() {
+        return genreRepository.findAll().stream()
+            .map(GenreDTO::genreToDto)
+            .collect(Collectors.toList());
     }
 }
