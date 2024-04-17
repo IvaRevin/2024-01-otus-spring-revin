@@ -16,14 +16,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Репозиторий на основе JPA для работы с комментариями к книгам")
 @DataJpaTest
-@Import({JpaCommentRepository.class})
 public class JpaCommentRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
-    private JpaCommentRepository commentRepository;
+    private CommentRepository commentRepository;
 
     @Test
     @DisplayName("Проверят что метод findById с существующим ID должен возвращать комментарий")

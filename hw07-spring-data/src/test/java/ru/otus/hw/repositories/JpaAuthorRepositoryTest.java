@@ -13,11 +13,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Репозиторий на основе JPA для работы с авторами ")
 @DataJpaTest
-@Import({JpaAuthorRepository.class})
 public class JpaAuthorRepositoryTest {
 
     @Autowired
-    private JpaAuthorRepository authorRepository;
+    private AuthorRepository authorRepository;
 
     @Test
     @DisplayName("Проверяет, что метод findById возвращает корректный объект Author.")

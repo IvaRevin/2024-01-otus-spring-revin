@@ -14,17 +14,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Репозиторий на основе JPA для работы с жанрами")
 @DataJpaTest
-@Import({JpaGenreRepository.class})
 public class JpaGenreRepositoryTest {
 
     @Autowired
-    private JpaGenreRepository genreRepository;
+    private GenreRepository genreRepository;
 
     @Test
     @DisplayName("Проверяет, что метод findAll возвращает корректный список объектов Genre.")
     void findAllByIdsShouldReturnGenres() {
         Set<Long> ids = Set.of(1L, 2L, 3L);
-        List<Genre> genres = genreRepository.findAllByIds(ids);
+        List<Genre> genres = genreRepository.findAllByIdIn(ids);
 
         assertThat(genres).hasSize(3);
         assertThat(genres).extracting(Genre::getName)

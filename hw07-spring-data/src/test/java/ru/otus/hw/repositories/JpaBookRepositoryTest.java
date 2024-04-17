@@ -19,14 +19,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Репозиторий на основе JPA для работы с книгами ")
 @DataJpaTest
-@Import({JpaBookRepository.class})
 class JpaBookRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
-    private JpaBookRepository bookRepository;
+    private BookRepository bookRepository;
 
     @Test
     @DisplayName("Проверяет, что метод findById возвращает корректный объект Book с установленными связями.")
