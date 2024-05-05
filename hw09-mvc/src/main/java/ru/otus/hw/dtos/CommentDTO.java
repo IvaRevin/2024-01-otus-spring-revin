@@ -1,14 +1,16 @@
 package ru.otus.hw.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 import ru.otus.hw.models.Comment;
 
 @Data
 @SuperBuilder
+@AllArgsConstructor
 public class CommentDTO {
 
-    private long id;
+    private Long id;
 
     private String text;
 

@@ -1,13 +1,15 @@
 package ru.otus.hw.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 import ru.otus.hw.models.Genre;
 
 @Data
 @SuperBuilder
+@AllArgsConstructor
 public class GenreDTO {
-    private long id;
+    private Long id;
 
     private String name;
 

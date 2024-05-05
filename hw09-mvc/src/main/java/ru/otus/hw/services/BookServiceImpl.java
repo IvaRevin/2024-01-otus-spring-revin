@@ -3,13 +3,16 @@ package ru.otus.hw.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.otus.hw.dtos.BookCreateDTO;
 import ru.otus.hw.dtos.BookDTO;
+import ru.otus.hw.dtos.BookEditDTO;
 import ru.otus.hw.exceptions.EntityNotFoundException;
 import ru.otus.hw.models.Book;
 import ru.otus.hw.repositories.AuthorRepository;
 import ru.otus.hw.repositories.BookRepository;
 import ru.otus.hw.repositories.GenreRepository;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -42,13 +45,22 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public BookDTO insert(String title, long authorId, Set<Long> genresIds) {
+    public BookDTO create(BookCreateDTO bookDTO) {
+        String title = bookDTO.getTitle();
+        long authorId = bookDTO.getAuthorId();
+        Set<Long> genresIds = new HashSet<>(List.of(bookDTO.getGenreIds()));
+
         return save(0, title, authorId, genresIds);
     }
 
     @Override
     @Transactional
-    public BookDTO update(long id, String title, long authorId, Set<Long> genresIds) {
+    public BookDTO update(BookEditDTO bookDTO) {
+        long id = bookDTO.getId();
+        String title = bookDTO.getTitle();
+        long authorId = bookDTO.getAuthorId();
+        Set<Long> genresIds = new HashSet<>(List.of(bookDTO.getGenreIds()));
+
         return save(id, title, authorId, genresIds);
     }
 

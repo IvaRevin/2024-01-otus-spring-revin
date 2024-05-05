@@ -1,5 +1,6 @@
 package ru.otus.hw.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 import ru.otus.hw.models.Book;
@@ -9,9 +10,10 @@ import java.util.stream.Collectors;
 
 @Data
 @SuperBuilder
+@AllArgsConstructor
 public class BookDTO {
 
-    private long id;
+    private Long id;
 
     private String title;
 
