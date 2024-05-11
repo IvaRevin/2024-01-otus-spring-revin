@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.11.0">
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw09-mvc/src/main/java/ru/otus/hw/dtos/BookEditDTO.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw09-mvc/src/main/java/ru/otus/hw/dtos/BookCreateDTO.java">
+</file>
+</checkstyle>
