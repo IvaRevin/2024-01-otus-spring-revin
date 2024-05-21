@@ -3,6 +3,7 @@ ru/otus/hw/controlles/AuthorController.class
 ru/otus/hw/services/AuthorServiceImpl.class
 ru/otus/hw/services/GenreService.class
 ru/otus/hw/exceptions/EntityNotFoundException.class
+ru/otus/hw/dtos/CommentCreateDTO.class
 ru/otus/hw/services/BookServiceImpl.class
 ru/otus/hw/dtos/BookCreateDTO.class
 ru/otus/hw/controlles/BookController.class
@@ -13,6 +14,7 @@ ru/otus/hw/Application.class
 ru/otus/hw/dtos/GenreDTO$GenreDTOBuilderImpl.class
 ru/otus/hw/models/Author.class
 ru/otus/hw/repositories/GenreRepository.class
+ru/otus/hw/dtos/CommentEditDTO.class
 ru/otus/hw/dtos/CommentDTO$CommentDTOBuilder.class
 ru/otus/hw/repositories/AuthorRepository.class
 ru/otus/hw/services/CommentService.class
