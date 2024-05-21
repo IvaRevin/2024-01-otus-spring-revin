@@ -2,88 +2,56 @@ package ru.otus.hw.controlles;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import ru.otus.hw.dtos.BookCreateDTO;
 import ru.otus.hw.dtos.BookDTO;
 import ru.otus.hw.dtos.BookEditDTO;
-import ru.otus.hw.services.AuthorServiceImpl;
 import ru.otus.hw.services.BookServiceImpl;
-import ru.otus.hw.services.GenreServiceImpl;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class BookController {
 
     private final BookServiceImpl bookService;
 
-    private final AuthorServiceImpl authorService;
-
-    private final GenreServiceImpl genreService;
-
-    @GetMapping("/")
-    public String getBookList(Model model) {
-        List<BookDTO> bookDTOList = bookService.findAll();
-        model.addAttribute("books", bookDTOList);
-        return "books/books";
+    @GetMapping("/api/books")
+    public List<BookDTO> getBookList() {
+        return bookService.findAll();
     }
 
-    @GetMapping("/edit_book")
-    public String editBook(
-        @RequestParam(value = "id", required = false) Long id,
-        Model model
-    ) {
-        if (id == null) {
-            BookCreateDTO book = new BookCreateDTO(null, null, null, new Long[0]);
-            model.addAttribute("book", book);
-        } else {
-            bookService.findById(id)
-                .ifPresent(book -> model.addAttribute("book", BookEditDTO.fromBookDto(book)));
-        }
-
-        model.addAttribute("authors", authorService.findAll());
-        model.addAttribute("genres", genreService.findAll());
-        return "books/edit_book";
+    @GetMapping("/api/books/{id}")
+    public BookDTO getBook(@PathVariable(value = "id", required = false) Long id) {
+        return bookService.findById(id).orElse(null);
     }
 
-    @PostMapping("/update_book")
-    public String updateBook(
-        @Valid @ModelAttribute("book") BookEditDTO book,
-        BindingResult bindingResult
-    ) {
-        if (bindingResult.hasErrors()) {
-            return "redirect:/edit_book?id=%d".formatted(book.getId());
-        }
-
-        bookService.update(book);
-        return "redirect:/";
+    @PatchMapping("/api/books/{id}")
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public BookDTO editBook(@PathVariable("id") Long id,
+                              @Valid @RequestBody BookEditDTO book) {
+        book.setId(id);
+        return bookService.update(book);
     }
 
-
-    @PostMapping("/create_book")
-    public String createBook(
-        @Valid @ModelAttribute("book") BookCreateDTO book,
-        BindingResult bindingResult
-    ) {
-        if (bindingResult.hasErrors()) {
-            return "redirect:/edit_book?id=%d".formatted(book.getId());
-        }
-
-        bookService.create(book);
-        return "redirect:/";
+    @PostMapping("/api/books")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public BookDTO createBook(@Valid @RequestBody BookCreateDTO book) {
+        return bookService.create(book);
     }
 
-    @PostMapping("/delete")
-    public String deleteBook(@RequestParam("id") long id) {
+    @DeleteMapping("/api/books/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void deleteBook(@PathVariable("id") Long id) {
         bookService.deleteById(id);
-        return "redirect:/";
     }
 }

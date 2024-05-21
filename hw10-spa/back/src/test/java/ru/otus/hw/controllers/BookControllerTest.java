@@ -2,31 +2,26 @@ package ru.otus.hw.controllers;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
 import ru.otus.hw.controlles.BookController;
 import ru.otus.hw.dtos.AuthorDTO;
 import ru.otus.hw.dtos.BookCreateDTO;
 import ru.otus.hw.dtos.BookDTO;
 import ru.otus.hw.dtos.GenreDTO;
-import ru.otus.hw.services.AuthorServiceImpl;
 import ru.otus.hw.services.BookServiceImpl;
-import ru.otus.hw.services.GenreServiceImpl;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 @DisplayName("Тесты контроллера связанного с книгами.")
@@ -39,56 +34,65 @@ public class BookControllerTest {
     @MockBean
     private BookServiceImpl bookService;
 
-    @MockBean
-    private AuthorServiceImpl authorService;
-
-    @MockBean
-    private GenreServiceImpl genreService;
-
     private BookDTO sampleBook;
 
     @BeforeEach
     void setUp() {
-        AuthorDTO author = new AuthorDTO(1L, "some name");
-        List<GenreDTO> genreDTOList = new ArrayList<>();
-        genreDTOList.add(new GenreDTO(1L, "some name 1"));
-        genreDTOList.add(new GenreDTO(2L, "some name 2"));
-        sampleBook = new BookDTO(1L, "Sample Book", author, genreDTOList);
+        AuthorDTO author = new AuthorDTO(1L, "Author_1");
+        List<GenreDTO> genres = new ArrayList<>();
+        genres.add(new GenreDTO(1L, "Genre_1"));
+        genres.add(new GenreDTO(2L, "Genre_2"));
+        sampleBook = new BookDTO(1L, "BookTitle_1", author, genres);
     }
 
     @Test
     @DisplayName("Должен отобразить все книги")
-    void allBooksList_ShouldAddBooksToModel_AndReturnBooksView() throws Exception {
-        List<BookDTO> books = Collections.singletonList(sampleBook);
+    void allBooksList_ShouldReturnBooks() throws Exception {
+        List<BookDTO> books = Arrays.asList(
+            new BookDTO(1L, "BookTitle_1", new AuthorDTO(1L, "Author_1"), Arrays.asList(new GenreDTO(1L, "Genre_1"), new GenreDTO(2L, "Genre_2"))),
+            new BookDTO(2L, "BookTitle_2", new AuthorDTO(2L, "Author_2"), Arrays.asList(new GenreDTO(3L, "Genre_3"), new GenreDTO(4L, "Genre_4"))),
+            new BookDTO(3L, "BookTitle_3", new AuthorDTO(3L, "Author_3"), Arrays.asList(new GenreDTO(5L, "Genre_5"), new GenreDTO(6L, "Genre_6")))
+        );
         given(bookService.findAll()).willReturn(books);
 
-        mockMvc.perform(get("/"))
+        mockMvc.perform(get("/api/books"))
             .andExpect(status().isOk())
-            .andExpect(view().name("books/books"));
+            .andExpect(content().json("[{'id':1,'title':'BookTitle_1','author':{'id':1,'fullName':'Author_1'},'genres':[{'id':1,'name':'Genre_1'},{'id':2,'name':'Genre_2'}]},{'id':2,'title':'BookTitle_2','author':{'id':2,'fullName':'Author_2'},'genres':[{'id':3,'name':'Genre_3'},{'id':4,'name':'Genre_4'}]},{'id':3,'title':'BookTitle_3','author':{'id':3,'fullName':'Author_3'},'genres':[{'id':5,'name':'Genre_5'},{'id':6,'name':'Genre_6'}]}]"));
     }
 
-    @Test
-    @DisplayName("Должно пройти успешное редактирование книги")
-    void editBook_WhenIdIsProvided_ShouldAddBookToModel_AndReturnEditView() throws Exception {
-        given(bookService.findById(1L)).willReturn(java.util.Optional.of(sampleBook));
-        given(authorService.findAll()).willReturn(List.of());
-        given(genreService.findAll()).willReturn(List.of());
 
-        mockMvc.perform(get("/edit_book").param("id", "1"))
+    @Test
+    @DisplayName("Должно получить информацию о книге по ID")
+    void getBookById_WhenIdIsProvided_ShouldReturnBook() throws Exception {
+        given(bookService.findById(1L)).willReturn(java.util.Optional.of(sampleBook));
+
+        mockMvc.perform(get("/api/books/1"))
             .andExpect(status().isOk())
-            .andExpect(view().name("books/edit_book"));
+            .andExpect(content().json("{'id':1,'title':'BookTitle_1','author':{'id':1,'fullName':'Author_1'},'genres':[{'id':1,'name':'Genre_1'},{'id':2,'name':'Genre_2'}]}"));
     }
 
     @Test
     @DisplayName("Должно пройти успешное создание книги")
-    void createBook_WhenPostRequest_ExpectRedirection() throws Exception {
-        mockMvc.perform(post("/create_book")
-                .param("title", "New Book")
-                .param("authorId", "1")
-                .param("genreIds", "1", "2"))
-            .andExpect(status().is3xxRedirection())
-            .andExpect(redirectedUrl("/"));
+    void createBook_WhenValidRequest_ExpectCreation() throws Exception {
+        BookCreateDTO createDTO = new BookCreateDTO(4L,"New Book", 1L, new Long[]{1L, 2L});
+        BookDTO createdBook = new BookDTO(4L, "New Book", new AuthorDTO(1L, "Author_1"), Arrays.asList(new GenreDTO(1L, "Genre_1"), new GenreDTO(2L, "Genre_2")));
 
-        verify(bookService).create(new BookCreateDTO(null, "New Book", 1L, new Long[]{1L, 2L}));
+        given(bookService.create(createDTO)).willReturn(createdBook);
+
+        mockMvc.perform(post("/api/books")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(createDTO)))
+            .andExpect(status().isCreated())
+            .andExpect(content().json("{'id':4,'title':'New Book','author':{'id':1,'fullName':'Author_1'},'genres':[{'id':1,'name':'Genre_1'},{'id':2,'name':'Genre_2'}]}"));
     }
+
+    @Test
+    @DisplayName("Должно пройти успешное удаление книги")
+    void deleteBook_WhenIdIsProvided_ExpectNoContent() throws Exception {
+        mockMvc.perform(delete("/api/books/1"))
+            .andExpect(status().isNoContent());
+
+        verify(bookService).deleteById(1L);
+    }
+
 }
