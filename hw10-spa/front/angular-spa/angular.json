@@ -32,12 +32,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -70,7 +65,8 @@
               "buildTarget": "angular-spa:build:production"
             },
             "development": {
-              "buildTarget": "angular-spa:build:development"
+              "buildTarget": "angular-spa:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
@@ -102,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "e81791fb-f7f8-4f80-8e6d-23ba43c8b122"
   }
 }
