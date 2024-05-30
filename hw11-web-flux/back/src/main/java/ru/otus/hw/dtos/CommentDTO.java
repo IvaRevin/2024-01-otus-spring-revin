@@ -22,4 +22,13 @@ public class CommentDTO {
             .book(BookDTO.bookToDto(comment.getBook()))
             .build();
     }
+
+    public static Comment fromDto(CommentDTO comment) {
+
+        return Comment.builder()
+            .id(comment.getId())
+            .text(comment.getText())
+            .book(BookDTO.fromDto(comment.getBook()))
+            .build();
+    }
 }
