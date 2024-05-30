@@ -10,19 +10,13 @@
 </file>
 <file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/CommentDTO.java">
 </file>
-<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/BookEditDTO.java">
-</file>
 <file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/BookDTO.java">
-</file>
-<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/CommentEditDTO.java">
 </file>
 <file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/AuthorDTO.java">
 </file>
-<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/BookCreateDTO.java">
-</file>
-<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/CommentCreateDTO.java">
-</file>
 <file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/GenreDTO.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/event/BooksCascadeMongoEventListener.java">
 </file>
 <file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/services/AuthorService.java">
 </file>
@@ -40,7 +34,17 @@
 </file>
 <file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/services/CommentService.java">
 </file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/mongock/changelog/DatabaseChangelog.java">
+</file>
 <file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/Application.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/converters/CommentConverter.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/converters/BookConverter.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/converters/AuthorConverter.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/converters/GenreConverter.java">
 </file>
 <file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/repositories/CommentRepository.java">
 </file>
@@ -54,12 +58,12 @@
 </file>
 <file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/exceptions/EntityNotUpdateException.java">
 </file>
-<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/GenreController.java">
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/commands/BookCommands.java">
 </file>
-<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/AuthorController.java">
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/commands/AuthorCommands.java">
 </file>
-<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/CommentController.java">
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/commands/GenreCommands.java">
 </file>
-<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/BookController.java">
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/commands/CommentCommands.java">
 </file>
 </checkstyle>

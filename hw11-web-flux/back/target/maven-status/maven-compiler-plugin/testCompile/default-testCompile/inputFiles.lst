@@ -1,5 +1,4 @@
-/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/test/java/ru/otus/hw/repositories/JpaAuthorRepositoryTest.java
-/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/test/java/ru/otus/hw/repositories/JpaGenreRepositoryTest.java
-/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/test/java/ru/otus/hw/controllers/BookControllerTest.java
-/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/test/java/ru/otus/hw/repositories/JpaBookRepositoryTest.java
-/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/test/java/ru/otus/hw/repositories/JpaCommentRepositoryTest.java
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/test/java/ru/otus/hw/repositories/MongoBookRepositoryTest.java
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/test/java/ru/otus/hw/repositories/MongoGenreRepositoryTest.java
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/test/java/ru/otus/hw/repositories/MongoAuthorRepositoryTest.java
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/test/java/ru/otus/hw/repositories/MongoCommentRepositoryTest.java

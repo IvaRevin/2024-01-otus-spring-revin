@@ -21,8 +21,4 @@ public class GenreServiceImpl implements GenreService {
             .map(GenreDTO::genreToDto)
             .collect(Collectors.toList());
     }
-
-    public GenreDTO findById(Long id) {
-        return genreRepository.findById(id).map(GenreDTO::genreToDto).orElse(null);
-    }
 }

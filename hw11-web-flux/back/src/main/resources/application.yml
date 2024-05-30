@@ -1,21 +1,25 @@
 spring:
-  messages:
-    encoding: UTF-8
+  data:
+    mongodb:
+      port: 27017
+      database: books
+      host: localhost
 
-  datasource:
-    url: jdbc:h2:mem:maindb
-  sql:
-    init:
-      mode: always
+  shell:
+    interactive:
+      enable: true
+    noninteractive:
+      enable: false
 
-  jpa:
-    open-in-view: false
-    generate-ddl: false
-    hibernate:
-      ddl-auto: none
+    command:
+      version:
+        enabled: false
 
-    show-sql: true
-
-logging:
-  level:
-    ROOT: ERROR
+mongock:
+  runner-type: initializingbean
+  change-logs-scan-package:
+    - ru.otus.hw.mongock.changelog
+  mongo-db:
+    write-concern:
+      journal: false
+    read-concern: local
