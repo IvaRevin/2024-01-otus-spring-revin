@@ -28,4 +28,14 @@ public class BookDTO {
             .genres(book.getGenres().stream().map(GenreDTO::genreToDto).collect(Collectors.toList()))
             .build();
     }
+
+    public static Book fromDto(BookDTO book) {
+
+        return Book.builder()
+            .id(book.getId())
+            .title(book.getTitle())
+            .author(AuthorDTO.fromDto(book.getAuthor()))
+            .genres(book.getGenres().stream().map(GenreDTO::fromDto).collect(Collectors.toList()))
+            .build();
+    }
 }

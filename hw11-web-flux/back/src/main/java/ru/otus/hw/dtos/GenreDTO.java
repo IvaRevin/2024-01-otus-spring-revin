@@ -18,4 +18,12 @@ public class GenreDTO {
             .name(genre.getName())
             .build();
     }
+
+    public static Genre fromDto(GenreDTO genre) {
+
+        return Genre.builder()
+            .id(genre.getId())
+            .name(genre.getName())
+            .build();
+    }
 }

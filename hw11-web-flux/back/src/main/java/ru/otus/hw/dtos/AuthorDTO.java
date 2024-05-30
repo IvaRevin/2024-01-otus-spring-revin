@@ -19,4 +19,12 @@ public class AuthorDTO {
             .fullName(author.getFullName())
             .build();
     }
+
+    public static Author fromDto(AuthorDTO author) {
+
+        return Author.builder()
+            .id(author.getId())
+            .fullName(author.getFullName())
+            .build();
+    }
 }
