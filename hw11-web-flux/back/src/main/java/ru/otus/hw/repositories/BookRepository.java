@@ -1,13 +1,12 @@
 package ru.otus.hw.repositories;
 
 import jakarta.annotation.Nonnull;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import reactor.core.publisher.Mono;
 import ru.otus.hw.models.Book;
 
-import java.util.Optional;
-
-public interface BookRepository extends MongoRepository<Book, String> {
+public interface BookRepository extends ReactiveMongoRepository<Book, String> {
 
     @Nonnull
-    Optional<Book> findById(@Nonnull String id);
+    Mono<Book> findById(@Nonnull String id);
 }
