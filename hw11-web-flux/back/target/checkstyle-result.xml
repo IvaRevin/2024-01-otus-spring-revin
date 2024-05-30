@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.11.0">
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/models/Genre.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/models/Book.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/models/Author.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/models/Comment.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/CommentDTO.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/BookEditDTO.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/BookDTO.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/CommentEditDTO.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/AuthorDTO.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/BookCreateDTO.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/CommentCreateDTO.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/GenreDTO.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/services/AuthorService.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/services/AuthorServiceImpl.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/services/GenreService.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/services/BookServiceImpl.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/services/GenreServiceImpl.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/services/CommentServiceImpl.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/services/BookService.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/services/CommentService.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/Application.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/repositories/CommentRepository.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/repositories/BookRepository.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/repositories/GenreRepository.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/repositories/AuthorRepository.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/exceptions/EntityNotFoundException.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/exceptions/EntityNotUpdateException.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/GenreController.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/AuthorController.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/CommentController.java">
+</file>
+<file name="/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/BookController.java">
+</file>
+</checkstyle>
