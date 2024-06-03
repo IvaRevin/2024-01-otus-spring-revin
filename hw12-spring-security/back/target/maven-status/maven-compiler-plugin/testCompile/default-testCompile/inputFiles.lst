@@ -1,0 +1,5 @@
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw12-spring-security/back/src/test/java/ru/otus/hw/controllers/BookControllerTest.java
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw12-spring-security/back/src/test/java/ru/otus/hw/repositories/JpaBookRepositoryTest.java
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw12-spring-security/back/src/test/java/ru/otus/hw/repositories/JpaGenreRepositoryTest.java
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw12-spring-security/back/src/test/java/ru/otus/hw/repositories/JpaAuthorRepositoryTest.java
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw12-spring-security/back/src/test/java/ru/otus/hw/repositories/JpaCommentRepositoryTest.java
