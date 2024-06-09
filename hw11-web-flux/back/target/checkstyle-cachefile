@@ -1,0 +1,26 @@
+#Fri May 31 01:29:40 MSK 2024
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/Application.java=1717103769719
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/AuthorController.java=1717099608980
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/BookController.java=1717100048725
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/CommentController.java=1717100372592
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/controlles/GenreController.java=1717100372572
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/AuthorDTO.java=1717091639575
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/BookCreateDTO.java=1717091639475
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/BookDTO.java=1717091639515
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/BookEditDTO.java=1717101989150
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/CommentCreateDTO.java=1717091639555
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/CommentDTO.java=1717091639535
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/CommentEditDTO.java=1717091639447
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/dtos/GenreDTO.java=1717091639507
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/event/BooksCascadeMongoEventListener.java=1714911557477
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/exceptions/EntityNotFoundException.java=1714911557477
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/exceptions/EntityNotUpdateException.java=1714911557477
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/models/Author.java=1717091639523
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/models/Book.java=1717091238477
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/models/Comment.java=1717091639563
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/models/Genre.java=1717091639495
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/repositories/AuthorRepository.java=1717088894481
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/repositories/BookRepository.java=1717088967044
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/repositories/CommentRepository.java=1717088989376
+/home/ivan/Projects/OTUS/HW/2024-01-otus-spring-revin/hw11-web-flux/back/src/main/java/ru/otus/hw/repositories/GenreRepository.java=1717089021592
+configuration*?=920E79F4579ADF5DF019B89E46DD7BE1193AC5B3
