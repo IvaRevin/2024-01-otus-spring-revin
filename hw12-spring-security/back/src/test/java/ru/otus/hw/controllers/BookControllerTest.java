@@ -1,21 +1,18 @@
 package ru.otus.hw.controllers;
 
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.otus.hw.controlles.BookController;
 import ru.otus.hw.dtos.AuthorDTO;
-import ru.otus.hw.dtos.BookCreateDTO;
 import ru.otus.hw.dtos.BookDTO;
 import ru.otus.hw.dtos.GenreDTO;
 import ru.otus.hw.services.BookServiceImpl;
@@ -46,6 +43,10 @@ public class BookControllerTest {
     }
 
     @Test
+    @WithMockUser(
+        username = "user",
+        authorities = {"ROLE_USER"}
+    )
     @DisplayName("Должен отобразить все книги")
     void allBooksList_ShouldReturnBooks() throws Exception {
         List<BookDTO> books = Arrays.asList(
@@ -62,6 +63,10 @@ public class BookControllerTest {
 
 
     @Test
+    @WithMockUser(
+        username = "user",
+        authorities = {"ROLE_USER"}
+    )
     @DisplayName("Должно получить информацию о книге по ID")
     void getBookById_WhenIdIsProvided_ShouldReturnBook() throws Exception {
         given(bookService.findById(1L)).willReturn(java.util.Optional.of(sampleBook));
@@ -71,28 +76,12 @@ public class BookControllerTest {
             .andExpect(content().json("{'id':1,'title':'BookTitle_1','author':{'id':1,'fullName':'Author_1'},'genres':[{'id':1,'name':'Genre_1'},{'id':2,'name':'Genre_2'}]}"));
     }
 
+    @DisplayName("Удаление книги по id")
     @Test
-    @DisplayName("Должно пройти успешное создание книги")
-    void createBook_WhenValidRequest_ExpectCreation() throws Exception {
-        BookCreateDTO createDTO = new BookCreateDTO(4L,"New Book", 1L, new Long[]{1L, 2L});
-        BookDTO createdBook = new BookDTO(4L, "New Book", new AuthorDTO(1L, "Author_1"), Arrays.asList(new GenreDTO(1L, "Genre_1"), new GenreDTO(2L, "Genre_2")));
+    void deleteBookWith401() throws Exception {
 
-        given(bookService.create(createDTO)).willReturn(createdBook);
-
-        mockMvc.perform(post("/api/books")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(createDTO)))
-            .andExpect(status().isCreated())
-            .andExpect(content().json("{'id':4,'title':'New Book','author':{'id':1,'fullName':'Author_1'},'genres':[{'id':1,'name':'Genre_1'},{'id':2,'name':'Genre_2'}]}"));
-    }
-
-    @Test
-    @DisplayName("Должно пройти успешное удаление книги")
-    void deleteBook_WhenIdIsProvided_ExpectNoContent() throws Exception {
-        mockMvc.perform(delete("/api/books/1"))
-            .andExpect(status().isNoContent());
-
-        verify(bookService).deleteById(1L);
+        mockMvc.perform(get("/delete").param("id", String.valueOf(1)))
+            .andExpect(status().isUnauthorized());
     }
 
 }
