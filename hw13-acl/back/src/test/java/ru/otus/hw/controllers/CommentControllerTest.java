@@ -1,6 +1,7 @@
 package ru.otus.hw.controllers;
 
 import static org.mockito.BDDMockito.given;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -14,7 +15,9 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.otus.hw.controlles.CommentController;
 import ru.otus.hw.dtos.BookDTO;
+import ru.otus.hw.dtos.CommentCreateDTO;
 import ru.otus.hw.dtos.CommentDTO;
+import ru.otus.hw.dtos.CommentEditDTO;
 import ru.otus.hw.services.CommentServiceImpl;
 
 import java.util.Arrays;
@@ -64,6 +67,44 @@ public class CommentControllerTest {
         mockMvc.perform(get("/api/comments/1"))
             .andExpect(status().isOk())
             .andExpect(content().json("{'id':1,'text':'Sample comment','book':{'id':1,'title':'Sample Book'}}"));
+    }
+
+    @Test
+    @WithMockUser(username = "admin", authorities = {"ROLE_ADMIN"})
+    @DisplayName("Должен создать новый комментарий с ролью ADMIN")
+    void addCommentForBook_WithAdminRole_ShouldCreateComment() throws Exception {
+        CommentCreateDTO newComment = new CommentCreateDTO( "New comment", 1L);
+        given(commentService.insert(newComment)).willReturn(sampleComment);
+
+        mockMvc.perform(post("/api/comments")
+                .with(csrf())
+                .contentType("application/json")
+                .content("{\"bookId\":1,\"text\":\"New comment\"}"))
+            .andExpect(status().isCreated())
+            .andExpect(content().json("{\"id\":1,\"text\":\"Sample comment\",\"book\":{\"id\":1,\"title\":\"Sample Book\"}}"));
+    }
+
+    @Test
+    @WithMockUser(username = "admin", authorities = {"ROLE_ADMIN"})
+    @DisplayName("Должен обновить комментарий с ролью ADMIN")
+    void updateComment_WithAdminRole_ShouldUpdateComment() throws Exception {
+        CommentEditDTO editedComment = new CommentEditDTO(1L, "Updated comment", 1L);
+        given(commentService.update(editedComment)).willReturn(sampleComment);
+
+        mockMvc.perform(patch("/api/comments/1")
+                .with(csrf())
+                .contentType("application/json")
+                .content("{\"text\":\"Updated comment\", \"bookId\":1}"))
+            .andExpect(status().isAccepted())
+            .andExpect(content().json("{\"id\":1,\"text\":\"Sample comment\",\"book\":{\"id\":1,\"title\":\"Sample Book\"}}"));
+    }
+
+    @Test
+    @WithMockUser(username = "admin", authorities = {"ROLE_ADMIN"})
+    @DisplayName("Должен удалить комментарий с ролью ADMIN")
+    void deleteComment_WithAdminRole_ShouldDeleteComment() throws Exception {
+        mockMvc.perform(delete("/api/comments/1") .with(csrf()))
+            .andExpect(status().isNoContent());
     }
 
     @Test
