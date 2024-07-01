@@ -3,6 +3,7 @@ package ru.otus.hw.controlles;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -27,22 +28,26 @@ public class CommentController {
     private final CommentServiceImpl commentService;
 
     @GetMapping("/books/{id}/comments")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public List<CommentDTO> getCommentBookList(@PathVariable("id") long id) {
         return commentService.findAllByBookId(id);
     }
 
     @GetMapping("/comments/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public CommentDTO getCommentById(@PathVariable("id") Long id) {
         return commentService.findById(id).orElse(null);
     }
 
     @PostMapping("/comments")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(value = HttpStatus.CREATED)
     public CommentDTO addCommentForBook(@Valid @RequestBody CommentCreateDTO dto) {
         return commentService.insert(dto);
     }
 
     @PatchMapping("/comments/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public CommentDTO updateComment(@PathVariable("id") Long id,
                                     @Valid @RequestBody CommentEditDTO dto) {
@@ -51,6 +56,7 @@ public class CommentController {
     }
 
     @DeleteMapping("/comments/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteComment(@PathVariable("id") Long id) {
         commentService.deleteById(id);
