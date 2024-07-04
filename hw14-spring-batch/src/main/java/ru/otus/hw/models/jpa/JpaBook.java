@@ -1,4 +1,4 @@
-package ru.otus.hw.models;
+package ru.otus.hw.models.jpa;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,7 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "books")
-public class Book {
+public class JpaBook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,7 @@ public class Book {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
-    private Author author;
+    private JpaAuthor author;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -39,5 +39,5 @@ public class Book {
         joinColumns = @JoinColumn(name = "book_id"),
         inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
-    private List<Genre> genres;
+    private List<JpaGenre> genres;
 }

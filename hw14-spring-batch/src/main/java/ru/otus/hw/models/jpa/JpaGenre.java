@@ -1,4 +1,4 @@
-package ru.otus.hw.models;
+package ru.otus.hw.models.jpa;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "genres")
-public class Genre {
+public class JpaGenre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
