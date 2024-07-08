@@ -16,6 +16,26 @@ spring:
 
     show-sql: true
 
+management:
+  endpoint:
+    health:
+      show-details: always
+    logfile:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health
+        exclude: "caches-cache"
+      base-path: "/metrics"
+  health:
+    diskspace:
+      enabled: true
+    defaults:
+      enabled: true
+
 logging:
   level:
-    ROOT: ERROR
+    ROOT: INFO
+  file:
+    name: "hw16_log"
