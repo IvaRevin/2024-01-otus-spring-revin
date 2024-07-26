@@ -1,0 +1,5 @@
+ru/otus/hw/repositories/JpaBookRepositoryTest.class
+ru/otus/hw/controllers/BookControllerTest.class
+ru/otus/hw/repositories/JpaAuthorRepositoryTest.class
+ru/otus/hw/repositories/JpaGenreRepositoryTest.class
+ru/otus/hw/repositories/JpaCommentRepositoryTest.class
