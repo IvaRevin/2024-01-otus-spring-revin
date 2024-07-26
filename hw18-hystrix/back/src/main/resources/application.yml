@@ -19,3 +19,34 @@ spring:
 logging:
   level:
     ROOT: ERROR
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        register-health-indicator: true
+        slidingWindowSize: 3
+        permittedNumberOfCallsInHalfOpenState: 3
+        slowCallDurationThreshold: 2s
+        slowCallRateThreshold: 10
+        failureRateThreshold: 3
+        waitDurationInOpenState: 2s
+        minimumNumberOfCalls: 3
+management:
+  endpoint:
+    health:
+      show-details: always
+    logfile:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "caches-cache"
+  health:
+    circuitbreakers:
+      enabled: true
+    diskspace:
+      enabled: true
+    defaults:
+      enabled: true
