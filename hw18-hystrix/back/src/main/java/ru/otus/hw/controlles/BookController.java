@@ -1,7 +1,9 @@
 package ru.otus.hw.controlles;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,19 +19,23 @@ import ru.otus.hw.dtos.BookDTO;
 import ru.otus.hw.dtos.BookEditDTO;
 import ru.otus.hw.services.BookServiceImpl;
 
+import java.util.Collections;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class BookController {
 
     private final BookServiceImpl bookService;
 
+    @CircuitBreaker(name = "bookBreaker", fallbackMethod = "unknownBookListFallback")
     @GetMapping("/api/books")
     public List<BookDTO> getBookList() {
         return bookService.findAll();
     }
 
+    @CircuitBreaker(name = "bookBreaker", fallbackMethod = "unknownBookFallback")
     @GetMapping("/api/books/{id}")
     public BookDTO getBook(@PathVariable(value = "id", required = false) Long id) {
         return bookService.findById(id).orElse(null);
@@ -53,5 +59,15 @@ public class BookController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteBook(@PathVariable("id") Long id) {
         bookService.deleteById(id);
+    }
+
+    public BookDTO unknownBookFallback(Exception ex) {
+        log.error(ex.getMessage(), ex);
+        return new BookDTO(null, "NaN", null, null);
+    }
+
+    public List<BookDTO> unknownBookListFallback(Exception ex) {
+        log.error("List book error:" + ex.getMessage(), ex);
+        return Collections.emptyList();
     }
 }
