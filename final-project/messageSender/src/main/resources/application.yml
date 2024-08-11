@@ -1,0 +1,67 @@
+spring:
+  messages:
+    encoding: UTF-8
+  task:
+   scheduling:
+    pool:
+      size: 5
+
+  rabbitmq:
+    addresses: "rabbitmq:5672"
+    username: guest
+    password: guest
+
+  mail:
+    host: smtp.yandex.ru
+    port: 587
+    username: messageSenderOtus
+    password: knhkyngrtdchfkhl
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:4432/mailSender
+    username: user
+    password: 123456789
+    tomcat:
+        connection-properties: stringtype=unspecified
+
+  sql:
+    init:
+      mode: always
+  flyway:
+    baseline-on-migrate: true
+  jpa:
+    open-in-view: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+    show-sql: true
+
+application:
+  daemonInterval: 30s
+  daemonEnabled: true
+  daemonDelay: 30s
+  versionFileName: version
+  maximumPoolSize: 1
+  taskThrottling: 1m
+  emailBaseTemplate: EmailBaseTemplate.ftl
+  emailTemplatesPath: email/
+  emailSenderAddress: messageSenderOtus@yandex.ru
+
+logging:
+  level:
+    ROOT: ERROR
+    org:
+      springframework:
+        security: DEBUG
