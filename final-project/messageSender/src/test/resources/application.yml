@@ -1,0 +1,10 @@
+spring:
+  messages:
+    encoding: UTF-8
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+logging:
+  level:
+    ROOT: ERROR
+
