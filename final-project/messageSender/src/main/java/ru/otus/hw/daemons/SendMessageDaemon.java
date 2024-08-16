@@ -34,9 +34,6 @@ public class SendMessageDaemon extends AbstractTaskDaemon<MessageSenderTask> {
 
     private final MessageSenderTaskRepository messageSenderTaskRepository;
 
-    /**
-     * <p>Карта переходов между состояниями для задач отправки группы документов в ЭДО.</p>
-     */
     private final Map<MessageState, MessageTaskTransition> transitions;
 
     protected SendMessageDaemon(
